@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  twitter-test:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      env_app_debug_level: debug
+
+      env_twitter_api: https://api.twitter.com/labs/2/tweets/search
+      env_twitter_bearer: AAAAAAAAAAAAAAAAAAAAAAs5%2FAAAAAAA%2BFhxtLDRr2AuKh5zdIHTczhg0Jg%3DltF0dqGzLFlmXH9wjI8HkO1gEzGlnCYUegwIOVVu1Umn8Yi1sX
+
+      env_mongodb_twitter_url: mongodb://mongo:27017
+
+      env_koa_port: 5000
+      env_koa_hostname: localhost
+    ports:
+      - 5000:5000
+    networks:
+      - server
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    command: mongod --dbpath /data/db
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - server
+
+networks:
+  server:
+    driver: bridge
+    external: true
+
+volumes:
+  mongo_data:

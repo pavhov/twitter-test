@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "strictFunctionTypes": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "noResolve": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "preserveSymlinks": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "diagnostics": false,
+    "inlineSourceMap": false,
+    "sourceMap": true,
+    "declaration": false,
+    "listEmittedFiles": false,
+    "forceConsistentCasingInFileNames": true,
+    "locale": "en",
+    "noLib": false,
+    "lib": [
+      "es2020"
+    ],
+    "outDir": "./out",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "sourceRoot": "./src"
+  },
+  "typeRoots": [
+    "./node_modules/@types",
+    "./src/lib/types/declarations.d.ts"
+  ],
+  "include": [
+    "./src/*.*"
+  ],
+  "exclude": [
+    "./out",
+    "./node_modules"
+  ],
+  "files": [
+    "./src/lib/types/all.d.ts",
+    "./src/main.ts"
+  ]
+}

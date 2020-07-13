@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "4e2bc69e-2289-4153-8e7e-73c116080e19",
+		"name": "tewitet-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"name\": \"Trump\",\r\n        \"$text\": { \r\n            \"$search\": \"President Trump and Republicans = put America first.\" \r\n        },\r\n        \"lang\": \"en\",\r\n        \"source\": \"Twitter for iPhone\"\r\n    },\r\n    \"meta\": {\r\n        \"page\": 4\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
