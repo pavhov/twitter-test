@@ -26,6 +26,8 @@ services:
     command: mongod --dbpath /data/db
     volumes:
       - mongo_data:/data/db
+    ports:
+    - 27017:27017
     networks:
       - server
 

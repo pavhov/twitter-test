@@ -18,7 +18,7 @@ const setTimeoutPromise = util.promisify(setTimeout);
  */
 const tryGetTwits = async (data: TwitInterface) => {
     info("Twit", data);
-    const day = moment().subtract(7, "days");
+    const day = moment().subtract(6, "days");
 
     const conditions: TwitConditions = {
         name: data.name,
@@ -26,9 +26,10 @@ const tryGetTwits = async (data: TwitInterface) => {
             $gte: day.unix(),
         }
     };
+
     const config: CoreOptions = {
         headers: {
-            "Authorization": `Bearer ${conf.env.twitter_bearer}`,
+            "Authorization": `Bearer ${conf.env.twitter.bearer}`,
         },
         qs: {
             start_time: day.toISOString(),
@@ -72,7 +73,7 @@ const tryGetTwits = async (data: TwitInterface) => {
             info([config.qs.since_id, config.qs.next_token, config.qs.start_time, options.count]);
 
             try {
-                const body = await request.get(conf.env.twitter_api, config);
+                const body = await request.get(conf.env.twitter.api, config);
                 const result = json.parse(body);
 
                 if (result == null || result.meta.result_count === 0 || options.count > 200) {
