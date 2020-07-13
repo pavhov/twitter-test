@@ -6,7 +6,7 @@ import request         from "request-promise-native";
 import { TwitConditions, TwitInputData, TwitInterface } from "./Interface";
 import { addTwit, getTwit }                             from "./Model";
 import conf                                             from "../../../conf/index";
-import { error, info }                                  from "../../../lib/util/logger";
+import { info }                                         from "../../../lib/util/logger";
 import { json }                                         from "../../../lib/util/parser";
 
 const setTimeoutPromise = util.promisify(setTimeout);
@@ -28,6 +28,7 @@ const tryGetTwits = async (data: TwitInterface) => {
     };
 
     const config: CoreOptions = {
+        timeout: 1500,
         headers: {
             "Authorization": `Bearer ${conf.env.twitter.bearer}`,
         },
@@ -101,15 +102,15 @@ const tryGetTwits = async (data: TwitInterface) => {
                 try {
                     await saveTwits(result, data, options);
                 } catch (e) {
-                    error(e);
+                    info(e);
                 }
             } catch (e) {
-                await setTimeoutPromise(1024*60*15);
-                error(e);
+                info(e);
+                await setTimeoutPromise(1024 * 60 * 15);
             }
         } while (options.continues);
     } catch (e) {
-        error(e);
+        info(e);
     }
 };
 
@@ -141,7 +142,7 @@ const saveTwits = async (twits: any, data: TwitInterface, options: any) => {
             await addTwit(twits.data[rowI]);
         } catch (e) {
             options.duplicates = true;
-            error(e);
+            info(e);
         }
     }
 };
