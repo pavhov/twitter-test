@@ -10,7 +10,7 @@
     "watch": "tsc --watch --project tsconfig.json",
     "build": "tsc --project tsconfig.json",
     "test": "NODE_ENV=test mocha -r ts-node/register test/test.ts",
-    "postinstall": "cp-cli ./src/conf/env.json5 ./out/conf/env.json5"
+    "postinstall": "cp-cli ./src/conf/env.json5 ./out/conf/env.json5 && cp-cli .env.example .env"
   },
   "keywords": [],
   "author": "",
