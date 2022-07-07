@@ -22,7 +22,7 @@
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^9.1.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.23",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
